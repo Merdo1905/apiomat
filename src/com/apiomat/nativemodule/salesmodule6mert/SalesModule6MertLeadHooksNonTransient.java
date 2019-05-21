@@ -96,6 +96,11 @@ public class SalesModule6MertLeadHooksNonTransient<T extends com.apiomat.nativem
     @Override
     public boolean beforePut( com.apiomat.nativemodule.salesmodule6mert.SalesModule6MertLead objFromDB, com.apiomat.nativemodule.salesmodule6mert.SalesModule6MertLead obj, com.apiomat.nativemodule.Request r )
     {
+        if (obj.getScore().equals(obj.getScore()))
+        {
+            return true;
+        }
+        this.model.logError("You cannot change Score");
         return false;
     }
 
