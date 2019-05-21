@@ -98,10 +98,11 @@ public class SalesModule6MertLeadHooksNonTransient<T extends com.apiomat.nativem
     {
         if (obj.getScore().equals(obj.getScore()))
         {
-            return true;
+            return false;
         }
-        this.model.logError("You cannot change Score");
-        return false;
+        this.model.log("You cannot change Score");
+        this.model.throwException("You cannot change Score");
+        return true;
     }
 
     @Override
