@@ -25,6 +25,8 @@
 package com.apiomat.nativemodule.salesmodule6mert;
 import com.apiomat.nativemodule.*;
 import com.apiomat.nativemodule.basics.User;
+import java.util.Date;
+import java.util.List;
 
 import com.apiomat.nativemodule.salesmodule6mert.*;
 
@@ -50,12 +52,15 @@ public class SalesModule6MertLeadHooksNonTransient<T extends com.apiomat.nativem
     @Override
     public void beforePost( com.apiomat.nativemodule.salesmodule6mert.SalesModule6MertLead obj, com.apiomat.nativemodule.Request r )
     {
+        obj.setLastVisit(new Date());
     }
 
 
     @Override
     public void afterPost( com.apiomat.nativemodule.salesmodule6mert.SalesModule6MertLead obj, com.apiomat.nativemodule.Request r )
     {
+        List<SalesModule6MertSalesman> salesModule6MertSalesmen = this.model.findByNames(SalesModule6MertSalesman.class, "userName == '" + r.getUserEmail() + "'", r);
+        salesModule6MertSalesmen.get(0).postListOfLeads(obj);
     }
 
     @Override
