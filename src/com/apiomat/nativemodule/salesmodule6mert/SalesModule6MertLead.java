@@ -62,6 +62,7 @@ public class SalesModule6MertLead extends com.apiomat.nativemodule.AbstractClien
     @com.apiomat.nativemodule.StaticData( type = com.apiomat.nativemodule.StaticData.Type.Image )
     private String profilePicURL;
     private double[] regPlace;
+    private Long score = null;
     /**
      * Protected constructor; to create a new instance, use the createObject() method
      */
@@ -277,6 +278,16 @@ public class SalesModule6MertLead extends com.apiomat.nativemodule.AbstractClien
         {
             this.regPlace[1] = longitude;
         }
+    }
+
+    public Long getScore()
+    {
+         return this.score;
+    }
+
+    public void setScore( Long arg )
+    {
+        this.score = arg;
     }
 
 }

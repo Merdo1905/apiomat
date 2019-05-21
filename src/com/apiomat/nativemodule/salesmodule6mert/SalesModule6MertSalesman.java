@@ -55,6 +55,7 @@ public class SalesModule6MertSalesman extends com.apiomat.nativemodule.basics.Us
 
     /** class specific attributes */
     private java.util.List<com.apiomat.nativemodule.salesmodule6mert.SalesModule6MertLead> listOfLeads = new java.util.ArrayList<com.apiomat.nativemodule.salesmodule6mert.SalesModule6MertLead>();
+    private double[] salesArea;
     /**
      * Protected constructor; to create a new instance, use the createObject() method
      */
@@ -107,6 +108,50 @@ public class SalesModule6MertSalesman extends com.apiomat.nativemodule.basics.Us
     {
         removeReference( "listOfLeads", refData );
         this.listOfLeads.remove( refData );
+    }
+
+    public double getSalesAreaLatitude( )
+    {
+         return this.salesArea !=null && this.salesArea.length > 0 ? this.salesArea[0] : 0;
+    }
+
+    public double getSalesAreaLongitude( )
+    {
+         return this.salesArea !=null && this.salesArea.length > 1 ? this.salesArea[1] : 0;
+    }
+
+    public void setSalesAreaLatitude( double latitude )
+    {
+        if( this.salesArea == null )
+        {
+            this.salesArea = new double[]{};
+        }
+
+        if ( this.salesArea.length < 2 )
+        {
+            this.salesArea = new double[]{ latitude, 0 };
+        }
+        else
+        {
+            this.salesArea[0] = latitude;
+        }
+    }
+
+    public void setSalesAreaLongitude( double longitude )
+    {
+        if( this.salesArea == null )
+        {
+            this.salesArea = new double[]{};
+        }
+
+        if ( this.salesArea.length < 2 )
+        {
+            this.salesArea = new double[]{ 0, longitude };
+        }
+        else
+        {
+            this.salesArea[1] = longitude;
+        }
     }
 
 }
