@@ -50,12 +50,15 @@ public class SalesModule6MertLeadHooksNonTransient<T extends com.apiomat.nativem
     @Override
     public void beforePost( com.apiomat.nativemodule.salesmodule6mert.SalesModule6MertLead obj, com.apiomat.nativemodule.Request r )
     {
+        obj.setLastVisit(new Date());
     }
 
 
     @Override
     public void afterPost( com.apiomat.nativemodule.salesmodule6mert.SalesModule6MertLead obj, com.apiomat.nativemodule.Request r )
     {
+        List<SalesModule6MertSalesman> salesModule6MertSalesmen = this.model.findByNames(SalesModule6MertSalesman.class, "userName == '" + r.getUserEmail() + "'", r);
+        salesModule6MertSalesmen.get(0).postListOfLeads(obj);
     }
 
     @Override
