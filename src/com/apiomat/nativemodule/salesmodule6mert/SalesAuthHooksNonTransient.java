@@ -155,7 +155,7 @@ public class SalesAuthHooksNonTransient<T extends com.apiomat.nativemodule.sales
     @Override
     public boolean auth(String httpVerb, String moduleName, String modelName, String modelForeignId, String userNameOrEmail, String passwordOrToken, Request request) {
 
-        return userNameOrEmail.endsWith("@training.de");
+        return userNameOrEmail.endsWith("@easy-software.com");
     }
 
 }
