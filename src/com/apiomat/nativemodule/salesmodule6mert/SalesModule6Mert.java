@@ -33,7 +33,7 @@ package com.apiomat.nativemodule.salesmodule6mert;
  * in these overridden methods, because they are initialized again before each call.
  *
  */
-@com.apiomat.nativemodule.Module( description="",
+    @com.apiomat.nativemodule.Module( description="",
          usedModules = { "Basics" }, securityPermissions = {} )
 public class SalesModule6Mert implements com.apiomat.nativemodule.IModule
 {
