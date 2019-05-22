@@ -25,6 +25,7 @@
 package com.apiomat.nativemodule.salesmodule6mert;
 
 import com.apiomat.nativemodule.IModel;
+import com.apiomat.nativemodule.Level;
 import io.swagger.annotations.ApiOperation;
 
 import javax.ws.rs.GET;
@@ -33,6 +34,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.OptionalDouble;
 
 /**
  * REST class for your module
@@ -91,14 +93,16 @@ public class RestClass extends com.apiomat.nativemodule.AbstractRestResource {
                 SalesModule6MertLead.MODEL_NAME,
                 "",
                 r);
-        Long score = Arrays.stream(leadArray)
+        OptionalDouble average = Arrays.stream(leadArray)
                 .filter(Objects::nonNull)
                 .filter(value -> value instanceof SalesModule6MertLead)
                 .map(value -> (SalesModule6MertLead) value)
                 .mapToLong(SalesModule6MertLead::getScore)
-                .sum();
+                .average();
+
+        SalesModule6Mert.AOM.log(Level.INFO, "Average Score is " + average);
 
 
-        return Response.ok(score).type(MediaType.TEXT_PLAIN).build();
+        return Response.ok(average).type(MediaType.TEXT_PLAIN).build();
     }
 }
