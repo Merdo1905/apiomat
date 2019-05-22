@@ -33,6 +33,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.OptionalDouble;
 
 /**
@@ -93,7 +94,7 @@ public class RestClass extends com.apiomat.nativemodule.AbstractRestResource {
                 "",
                 r);
         OptionalDouble average = Arrays.stream(leadArray)
-                .filter(value -> value instanceof SalesModule6MertLead)
+                .filter(Objects::nonNull)
                 .map(value -> (SalesModule6MertLead) value)
                 .mapToLong(SalesModule6MertLead::getScore)
                 .average();
@@ -101,6 +102,6 @@ public class RestClass extends com.apiomat.nativemodule.AbstractRestResource {
         SalesModule6Mert.AOM.log(Level.INFO, "Average Score is " + average);
 
 
-        return Response.ok(average).type(MediaType.TEXT_PLAIN).build();
+        return Response.ok("" + average).type(MediaType.TEXT_PLAIN).build();
     }
 }
