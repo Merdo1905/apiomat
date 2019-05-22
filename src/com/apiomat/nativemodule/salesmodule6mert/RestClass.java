@@ -33,7 +33,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.OptionalDouble;
 
 /**
@@ -94,7 +93,6 @@ public class RestClass extends com.apiomat.nativemodule.AbstractRestResource {
                 "",
                 r);
         OptionalDouble average = Arrays.stream(leadArray)
-                .filter(Objects::nonNull)
                 .filter(value -> value instanceof SalesModule6MertLead)
                 .map(value -> (SalesModule6MertLead) value)
                 .mapToLong(SalesModule6MertLead::getScore)
